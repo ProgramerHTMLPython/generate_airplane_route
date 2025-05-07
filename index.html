@@ -56,55 +56,30 @@
         <img id="aeropuertoCercanoImg" src="" alt="">
         <button onclick="elegirAvionYAeropuertos()">Elegir Aleatorios</button>
     </div>
-</body>
-</html>
-</html>
-</body>
-</html>
 
     <script>
-        const avionesLista = [
-            { nombre: 'Piper M350', imagen: 'https://static.wikia.nocookie.net/projectflight/images/a/a4/M350_Icon.png/revision/latest?cb=20240702125644' },
-            { nombre: 'Baron G58', imagen: 'https://static.wikia.nocookie.net/projectflight/images/1/18/Baron_G58.png/revision/latest?cb=20230530075318' },
-            { nombre: 'Metroliner III', imagen: 'https://static.wikia.nocookie.net/projectflight/images/9/9b/Metroliner_Icon.png/revision/latest?cb=20240702154841' },
-            { nombre: 'TBM 900', imagen: 'hhttps://static.wikia.nocookie.net/projectflight/images/a/a9/TBM_900.png/revision/latest?cb=20240702123516' },
-            { nombre: 'Cessna 150A', imagen: 'https://static.wikia.nocookie.net/projectflight/images/6/67/C150A_Icon.png/revision/latest?cb=20240702122413' },
-            { nombre: 'Cessna Citation II', imagen: 'https://static.wikia.nocookie.net/projectflight/images/5/52/Citation_II_Icon.png/revision/latest?cb=20240702123106' },
-            { nombre: 'Boeing 717', imagen: 'https://static.wikia.nocookie.net/projectflight/images/c/c7/Boeing_717.png/revision/latest?cb=20230530075143' },
-            { nombre: 'MD-11', imagen: 'https://static.wikia.nocookie.net/projectflight/images/1/1f/MD-11_Icon.png/revision/latest?cb=20240702125328' },
-            { nombre: 'Fokker 100', imagen: 'https://static.wikia.nocookie.net/projectflight/images/3/39/Fokker_100.png/revision/latest?cb=20221210131403' },
-            { nombre: 'Dash 8-Q400', imagen: 'https://static.wikia.nocookie.net/projectflight/images/c/c4/Dash_8-Q400.png/revision/latest?cb=20230530074906' },
-            { nombre: 'Eurofighter Typhoon', imagen: 'https://static.wikia.nocookie.net/projectflight/images/5/5d/Eurofighter_Typhoon_Icon.png/revision/latest?cb=20240707060444&format=original' },
-            { nombre: 'Hawk T1A', imagen: 'https://static.wikia.nocookie.net/projectflight/images/6/64/Hawk_T1.png/revision/latest?cb=20230530074708' },
-            { nombre: 'Boeing 787', imagen: 'https://static.wikia.nocookie.net/projectflight/images/7/74/Boeing_787.png/revision/latest?cb=20240603222022' },
-            { nombre: 'Boeing 777', imagen: 'https://static.wikia.nocookie.net/projectflight/images/e/eb/777_ICON.png/revision/latest?cb=20240105030741' },
-            { nombre: 'Boeing 757', imagen: 'https://static.wikia.nocookie.net/projectflight/images/0/01/Boeing_757_200_Icon.png/revision/latest?cb=20240803091104' },
-            { nombre: 'Boeing 737', imagen: 'https://static.wikia.nocookie.net/projectflight/images/3/33/737_Icon.png/revision/latest?cb=20240603203904' },
-            { nombre: 'Boeing 727', imagen: 'https://static.wikia.nocookie.net/projectflight/images/0/0d/Boeing_727_Icon.png/revision/latest?cb=20250415173620' },
-            { nombre: 'Airbus A350', imagen: 'https://static.wikia.nocookie.net/projectflight/images/2/2b/Airbus_A350_Icon.png/revision/latest?cb=20250409202313' },
-            { nombre: 'Airbus A320', imagen: 'https://static.wikia.nocookie.net/projectflight/images/a/a3/Airbus_A320_Icon.png/revision/latest?cb=20240811004152' },
-            { nombre: 'Airbus A220', imagen: 'https://static.wikia.nocookie.net/projectflight/images/d/df/A220_Icon.png/revision/latest?cb=20240702110413' },
-            { nombre: 'Airbus A320', imagen: 'https://static.wikia.nocookie.net/projectflight/images/7/79/A330_Icon.png/revision/latest?cb=20240702110706' }
+        // Listas de aviones grandes y aeropuertos grandes para restricciones
+        const avionesGrandes = [
+            "Boeing 717", "MD-11", "Boeing 787", "Boeing 777", 
+            "Boeing 757", "Boeing 737", "Boeing 727", "Airbus A350", 
+            "Airbus A320", "Airbus A220", "Airbus A330"
         ];
 
-        const aeropuertosLista = [
-    { nombre: 'Southampton', imagen: 'https://static.wikia.nocookie.net/projectflight/images/9/9f/Southampton_OV.png/revision/latest?cb=20240812141312' },
-    { nombre: 'Menorca', imagen: 'https://static.wikia.nocookie.net/projectflight/images/9/9f/Menorca_OV.png/revision/latest?cb=20240812140947' },
-    { nombre: 'Gatwick', imagen: 'https://static.wikia.nocookie.net/projectflight/images/2/25/Gatwick_OV.png/revision/latest?cb=20240812135857' },
-    { nombre: 'Gran Canaria', imagen: 'https://static.wikia.nocookie.net/projectflight/images/8/82/Gran_Canaria_OV.png/revision/latest?cb=20240812140302' },
-    { nombre: 'Arroyo Barril', imagen: 'https://static.wikia.nocookie.net/projectflight/images/7/72/Arroyo_Barril_OV.png/revision/latest?cb=20240812134755' },
-    { nombre: 'Cabo Rojo', imagen: 'https://static.wikia.nocookie.net/projectflight/images/3/39/Cabo_Rojo_OV.png/revision/latest?cb=20240812134929' },
-    { nombre: 'Antoine-Simon', imagen: 'https://static.wikia.nocookie.net/projectflight/images/4/44/Antoine-Simon_OV.png/revision/latest?cb=20240812134516' },
-    { nombre: 'Cibao', imagen: 'https://static.wikia.nocookie.net/projectflight/images/c/c4/Cibao_OV.png/revision/latest?cb=20240812135252' },
-    { nombre: 'Punta Cana', imagen: 'https://static.wikia.nocookie.net/projectflight/images/4/4c/Punta_Cana_OV.png/revision/latest?cb=20240812134328' },
-    { nombre: 'Kittilä', imagen: 'https://static.wikia.nocookie.net/projectflight/images/c/c4/Kittila_OV.png/revision/latest?cb=20240812140431' },
-    { nombre: 'Larnaca', imagen: 'https://static.wikia.nocookie.net/projectflight/images/5/58/Larnaca_OV.png/revision/latest?cb=20250410100109' }
-];
+        const aeropuertosGrandes = [
+            "Southampton", "Menorca", "Gran Canaria", "Gatwick", 
+            "Punta Cana", "Cibao"
+        ];
 
         function elegirAvionYAeropuertos() {
             let avionElegido = avionesLista[Math.floor(Math.random() * avionesLista.length)];
             let aeropuertoInicial = aeropuertosLista[Math.floor(Math.random() * aeropuertosLista.length)];
             let aeropuertoCercano = aeropuertosLista[Math.floor(Math.random() * aeropuertosLista.length)];
+
+            // Si el avión es grande y el aeropuerto inicial es pequeño, corregimos la selección
+            if (avionesGrandes.includes(avionElegido.nombre) && !aeropuertosGrandes.includes(aeropuertoInicial.nombre)) {
+                aeropuertoInicial = aeropuertosLista.find(a => aeropuertosGrandes.includes(a.nombre));
+                aeropuertoCercano = aeropuertosLista.find(a => aeropuertosGrandes.includes(a.nombre));
+            }
 
             document.getElementById("avion").textContent = `Avión: ${avionElegido.nombre}`;
             document.getElementById("avionImg").src = avionElegido.imagen;
